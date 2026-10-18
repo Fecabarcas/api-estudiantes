@@ -1,0 +1,310 @@
+/* ==========================================================
+   1. Variables
+   ========================================================== */
+:root {
+  --fondo: #e9eef5;
+  --papel: #ffffff;
+  --tinta: #16233a;
+  --tinta-suave: #5a6a82;
+  --linea: #d3dce8;
+  --azul: #2b59e8;
+  --azul-oscuro: #1f44b8;
+  --verde: #1f9d6b;
+  --ambar: #d98a0b;
+  --rojo: #d3433b;
+  --radio: 10px;
+  --fuente: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ==========================================================
+   2. Base
+   ========================================================== */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+body {
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--fuente);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+[hidden] { display: none !important; }
+
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+/* ==========================================================
+   3. Encabezado y estado de la API
+   ========================================================== */
+header h1 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: var(--tinta-suave);
+  max-width: 60ch;
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tinta-suave);
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ambar);
+}
+.punto.ok  { background: var(--verde); }
+.punto.mal { background: var(--rojo); }
+
+/* ==========================================================
+   4. Resumen
+   ========================================================== */
+.resumen {
+  display: flex;
+  gap: 40px;
+  margin: 32px 0 24px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--tinta);
+}
+
+.resumen div span {
+  display: block;
+  font-size: 14px;
+  color: var(--tinta-suave);
+}
+
+.resumen div strong {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================
+   5. Distribución y paneles
+   ========================================================== */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 24px;
+}
+
+.panel.form { position: sticky; top: 24px; }
+
+.panel h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.panel.editando {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(43, 89, 232, 0.15);
+}
+
+/* ==========================================================
+   6. Formulario
+   ========================================================== */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}
+
+.ayuda {
+  margin: -10px 0 16px;
+  font-size: 13px;
+  color: var(--tinta-suave);
+}
+
+.mensaje-form {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fbe9e7;
+  color: #8f2a22;
+}
+
+/* ==========================================================
+   7. Botones
+   ========================================================== */
+button {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 10px 16px;
+}
+
+.btn-principal {
+  background: var(--azul);
+  color: #fff;
+  width: 100%;
+}
+.btn-principal:hover { background: var(--azul-oscuro); }
+
+.btn-secundario {
+  background: transparent;
+  color: var(--tinta);
+  border-color: var(--linea);
+  width: 100%;
+  margin-top: 8px;
+}
+.btn-secundario:hover { border-color: var(--tinta); }
+
+.btn-mini {
+  padding: 6px 12px;
+  font-size: 14px;
+  background: transparent;
+  border-color: var(--linea);
+  color: var(--tinta);
+}
+.btn-mini:hover { border-color: var(--tinta); }
+
+.btn-mini.peligro { color: var(--rojo); }
+.btn-mini.peligro:hover { border-color: var(--rojo); }
+
+/* ==========================================================
+   8. Tabla
+   ========================================================== */
+.tabla-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--tinta-suave);
+  padding: 0 12px 12px;
+  border-bottom: 2px solid var(--tinta);
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: middle;
+}
+
+td.id {
+  color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+td.nombre { font-weight: 700; }
+td.acciones {
+  white-space: nowrap;
+  text-align: right;
+}
+td.acciones button + button { margin-left: 6px; }
+
+tr.fila-activa td { background: #eef3ff; }
+
+.vacio {
+  padding: 40px 12px;
+  text-align: center;
+  color: var(--tinta-suave);
+}
+
+/* Barra de promedio */
+.nota {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 150px;
+}
+.nota b {
+  font-variant-numeric: tabular-nums;
+  width: 38px;
+}
+.barra {
+  flex: 1;
+  height: 8px;
+  background: var(--linea);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.barra i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* ==========================================================
+   9. Aviso flotante
+   ========================================================== */
+.aviso {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  max-width: 340px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--tinta);
+  color: #fff;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.aviso.error { background: var(--rojo); }
+
+/* ==========================================================
+   10. Adaptable a celular
+   ========================================================== */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  .panel.form { position: static; }
+  header h1 { font-size: 34px; }
+  .resumen { gap: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
