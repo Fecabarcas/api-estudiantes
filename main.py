@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles  # AGREGADO: necesario para servir el frontend
+from fastapi.middleware.cors import CORSMiddleware  # AGREGADO: necesario para permitir que tu frontend local (Live Server) se conecte sin bloqueos de seguridad
 from app.api import rutas_estudiantes
 
 app = FastAPI(
@@ -7,6 +8,17 @@ app = FastAPI(
     description="Backend modular para monitoreo académico usando FastAPI y PostgreSQL puro",
     version="1.0.0"
 )
+
+# ==================== AGREGADO POR MÍ (CORS) ====================
+# Configuración para permitir solicitudes desde cualquier origen (como Live Server o tu navegador)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# ================================================================
 
 # Conectamos el módulo de rutas a la aplicación principal
 app.include_router(rutas_estudiantes.router)
