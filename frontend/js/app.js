@@ -2,7 +2,7 @@
    1. Configuración
    ========================================================== */
 // Ruta base de la API. Como esta página la sirve la misma API, la ruta es relativa.
-const API = "/estudiantes/";
+const API = "https://api-estudiantes-zfhs.onrender.com/estudiantes/";
 
 // Escala de notas usada para colorear y dibujar la barra. Cámbiala si usas otra (por ejemplo 10).
 const ESCALA_MAX = 5;
